@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.timer.viewmodel.MainViewModel
 import androidx.lifecycle.viewmodel.compose.*
 import com.example.timer.appColor.AppColor
+import com.example.timer.model.components.timeList
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
 import com.example.timer.view.components.CountButton
@@ -31,17 +32,17 @@ fun CountDownView(viewModel: MainViewModel = viewModel()) {
     val progress by viewModel.progress.observeAsState(1.0F)
     val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-    CountDownView(time = time, progress = progress, isPlaying = isPlaying) {
+    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList) {
         viewModel.handleCountDownTimer()
     }
 }
-
 @Composable
 fun CountDownView(
-    time:String,
+    time: String,
     progress: Float,
     isPlaying: Boolean,
-    optionSelected: () -> Unit
+    timeList: timeList,
+    function: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -49,9 +50,6 @@ fun CountDownView(
             .background(AppColor.forestGreen),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { model.TimeCountIncrement() }) {
-            Text(text = "hihi")
-        }
         Spacer(modifier = Modifier.padding(top = 50.dp))
         Text(
             text = "TIMER",
@@ -73,48 +71,8 @@ fun CountDownView(
                 .size(70.dp)
                 .padding(50.dp),
             isPlaying = isPlaying
-        ){
-            optionSelected()
-        }
-    }
-}
-@Composable
-fun countButton(
-    modifier: androidx.compose.ui.Modifier,
-    optionSelected: () -> Unit,
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = androidx.compose.ui.Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .padding(top = 90.dp)
-    ) {
-
-        Button(
-            onClick = {
-                optionSelected()
-            },
-            modifier =
-            androidx.compose.ui.Modifier
-                .height(70.dp)
-                .width(200.dp),
-
-            shape = RoundedCornerShape(25.dp),
-
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = AppColor.mossGreen,
-                contentColor = AppColor.forestGreen,
-            ),
-
-            ) {
-
-            Text(
-                text = "Click me",
-                fontSize = 20.sp,
-                color = Color.White,
-                fontFamily = FontFamily.Default
-            )
+        ) {
+            function()
         }
     }
 }

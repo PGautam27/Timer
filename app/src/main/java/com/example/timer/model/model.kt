@@ -12,14 +12,13 @@ object model {
   var TimeCountDown: Long = 60000L
   val TimeObj = timeList
 
-  fun TimeCountIncrement(){
-   /* var i = 0
+  fun TimeCountIncrement(id:Int){
+    var i = 0
     while (i<=TimeObj.time.size){
       if (id==TimeObj.time[i].id){
         TimeCountDown = TimeObj.time[i].timeContent
       }
-    }*/
-    TimeCountDown = 900000L
+    }
   }
   private const val TIME_FORMAT = "%02d:%02d:%02d"
 
