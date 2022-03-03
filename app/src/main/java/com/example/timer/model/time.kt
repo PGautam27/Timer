@@ -1,4 +1,4 @@
-package com.example.timer.utils
+package com.example.timer.model
 
 import java.util.concurrent.TimeUnit
 

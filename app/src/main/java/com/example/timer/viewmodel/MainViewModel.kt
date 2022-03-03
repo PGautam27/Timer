@@ -4,8 +4,8 @@ import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.timer.utils.Time
-import com.example.timer.utils.Time.formatTime
+import com.example.timer.model.Time
+import com.example.timer.model.Time.formatTime
 
 class MainViewModel: ViewModel() {
 
