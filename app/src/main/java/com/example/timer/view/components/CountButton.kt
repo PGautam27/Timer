@@ -18,7 +18,7 @@ import java.lang.reflect.Modifier
 
 @Composable
 fun CountButton(
-    modifier: Modifier,
+    modifier: androidx.compose.ui.Modifier,
     optionSelected: () -> Unit,
     isPlaying: Boolean
 ) {
