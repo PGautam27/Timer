@@ -1,17 +1,25 @@
 package com.example.timer.viewmodel
 
 import android.os.CountDownTimer
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.timer.model.Time
-import com.example.timer.model.Time.formatTime
+import androidx.lifecycle.viewModelScope
+
+import com.example.timer.model.model
+import com.example.timer.model.model.formatTime
+import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
+    private val _model = mutableStateOf<model>(model)
+
+    private val model1 = _model.value
+
     private var countDownTimer: CountDownTimer? = null
 
-    private val _time = MutableLiveData(Time.TIME_COUNTDOWN.formatTime())
+    private val _time = MutableLiveData(model1.TimeCountDown.formatTime())
     val time: LiveData<String> =_time
 
     private val _progress = MutableLiveData(1.00F)
@@ -20,6 +28,12 @@ class MainViewModel: ViewModel() {
     private val _isPlaying = MutableLiveData(false)
     val isPlaying: LiveData<Boolean> = _isPlaying
 
+
+    init {
+       viewModelScope.launch {
+
+       }
+    }
     fun handleCountDownTimer(){
         if (isPlaying.value == true){
             pauseTimer()
@@ -30,14 +44,14 @@ class MainViewModel: ViewModel() {
 
     private fun pauseTimer(){
         countDownTimer?.cancel()
-        handleTimerValues(false,Time.TIME_COUNTDOWN.formatTime(),1.0F)
+        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
     }
 
     private fun startTimer(){
         _isPlaying.value = true
-        countDownTimer = object : CountDownTimer(Time.TIME_COUNTDOWN,1000){
+        countDownTimer = object : CountDownTimer(model1.TimeCountDown,1000){
             override fun onTick(millisRemaining: Long) {
-                val progressValue = millisRemaining.toFloat()/Time.TIME_COUNTDOWN
+                val progressValue = millisRemaining.toFloat()/model1.TimeCountDown
                 handleTimerValues(true,millisRemaining.formatTime(),progressValue)
             }
             override fun onFinish(){
