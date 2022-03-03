@@ -22,7 +22,9 @@ class MainViewModel: ViewModel() {
 
     fun handleCountDownTimer(){
         if (isPlaying.value == true){
-
+            pauseTimer()
+        }else{
+            startTimer()
         }
     }
 
@@ -41,7 +43,7 @@ class MainViewModel: ViewModel() {
             override fun onFinish(){
                 pauseTimer()
             }
-        }
+        }.start()
     }
 
     private fun handleTimerValues(isPlaying:Boolean,text:String,progress: Float){
