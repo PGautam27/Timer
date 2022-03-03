@@ -2,9 +2,6 @@ package com.example.timer.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -16,7 +13,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.timer.viewmodel.MainViewModel
 import androidx.lifecycle.viewmodel.compose.*
 import com.example.timer.appColor.AppColor
 import com.example.timer.model.components.timeList
@@ -24,17 +20,17 @@ import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
 import com.example.timer.view.components.CountButton
 import com.example.timer.view.components.CountIndicatorCircle
+import com.example.timer.view.components.TimeButtons
+import com.example.timer.viewmodel.MainViewModel
 
 @Composable
-fun CountDownView(viewModel: MainViewModel = viewModel()) {
+fun CountDownView(viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
 
     val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
     val progress by viewModel.progress.observeAsState(1.0F)
     val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList) {
-        viewModel.handleCountDownTimer()
-    }
+    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList, function = { viewModel.handleCountDownTimer() }, function2 = { viewModel.handleCountDownTimer() })
 }
 @Composable
 fun CountDownView(
@@ -42,7 +38,8 @@ fun CountDownView(
     progress: Float,
     isPlaying: Boolean,
     timeList: timeList,
-    function: () -> Unit
+    function: () -> Unit,
+    function2:() ->Unit
 ) {
     Column(
         modifier = Modifier
@@ -59,8 +56,11 @@ fun CountDownView(
                 color = Color.White
             )
         )
+        TimeButtons(TimeList = timeList) {
+            function2()
+        }
         CountIndicatorCircle(
-            modifier = Modifier.padding(top = 50.dp),
+            modifier = Modifier.padding(top = 10.dp),
             progress = progress,
             time = time,
             size = 320,
