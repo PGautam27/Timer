@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flowOf
 import java.util.concurrent.TimeUnit
 
 object model {
-  var TimeCountDown: Long = 60000L
+  var TimeCountDown: Long = 0L
   val TimeObj = timeList
 
   fun TimeCountIncrement(id:Int){
