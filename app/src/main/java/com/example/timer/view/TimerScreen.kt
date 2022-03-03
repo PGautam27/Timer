@@ -7,3 +7,10 @@ import androidx.lifecycle.viewmodel.compose.*
 fun CountDownView(viewModel: MainViewModel = viewModel()) {
     
 }
+
+@Composable
+fun CountDownView(
+
+) {
+
+}
