@@ -15,11 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.timer.appColor.AppColor
 import com.example.timer.model.components.timeList
+import com.example.timer.model.model
+import com.example.timer.viewmodel.MainViewModel
 
 @Composable
 fun TimeButtons(
 TimeList: timeList,
-operation: ()-> Unit
+viewModel: MainViewModel
 ) {
     val times = remember { TimeList.time }
     LazyRow(
@@ -34,7 +36,7 @@ operation: ()-> Unit
             itemContent = {
                 Spacer(modifier = Modifier.padding(start = 10.dp))
                 Button(
-                    onClick = { operation() },
+                    onClick = { viewModel.changeDownTimer(it.id) },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = AppColor.mossGreen,
                         contentColor = Color.White

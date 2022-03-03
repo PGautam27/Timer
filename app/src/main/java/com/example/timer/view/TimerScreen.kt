@@ -24,13 +24,15 @@ import com.example.timer.view.components.TimeButtons
 import com.example.timer.viewmodel.MainViewModel
 
 @Composable
-fun CountDownView(viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun CountDownView(viewModel: MainViewModel = viewModel()) {
 
     val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
     val progress by viewModel.progress.observeAsState(1.0F)
     val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList, function = { viewModel.handleCountDownTimer() }, function2 = { viewModel.handleCountDownTimer() })
+    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList,viewModel){
+        viewModel.handleCountDownTimer()
+    }
 }
 @Composable
 fun CountDownView(
@@ -38,8 +40,8 @@ fun CountDownView(
     progress: Float,
     isPlaying: Boolean,
     timeList: timeList,
+    viewModel: MainViewModel,
     function: () -> Unit,
-    function2:() ->Unit
 ) {
     Column(
         modifier = Modifier
@@ -56,9 +58,7 @@ fun CountDownView(
                 color = Color.White
             )
         )
-        TimeButtons(TimeList = timeList) {
-            function2()
-        }
+        TimeButtons(TimeList = timeList,viewModel)
         CountIndicatorCircle(
             modifier = Modifier.padding(top = 10.dp),
             progress = progress,

@@ -42,6 +42,10 @@ class MainViewModel: ViewModel() {
         }
     }
 
+    fun changeDownTimer(id:Int){
+        model1.TimeCountIncrement(id)
+    }
+
     private fun pauseTimer(){
         countDownTimer?.cancel()
         handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)

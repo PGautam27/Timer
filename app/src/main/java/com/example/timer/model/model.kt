@@ -14,10 +14,11 @@ object model {
 
   fun TimeCountIncrement(id:Int){
     var i = 0
-    while (i<=TimeObj.time.size){
+    while (i<TimeObj.time.size){
       if (id==TimeObj.time[i].id){
         TimeCountDown = TimeObj.time[i].timeContent
       }
+      ++i
     }
   }
   private const val TIME_FORMAT = "%02d:%02d:%02d"
