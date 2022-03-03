@@ -19,8 +19,8 @@ import java.lang.reflect.Modifier
 @Composable
 fun CountButton(
     modifier: androidx.compose.ui.Modifier,
+    isPlaying: Boolean,
     optionSelected: () -> Unit,
-    isPlaying: Boolean
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
