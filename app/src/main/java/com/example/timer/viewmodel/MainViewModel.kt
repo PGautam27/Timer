@@ -28,12 +28,6 @@ class MainViewModel: ViewModel() {
     private val _isPlaying = MutableLiveData(false)
     val isPlaying: LiveData<Boolean> = _isPlaying
 
-
-    init {
-       viewModelScope.launch {
-
-       }
-    }
     fun handleCountDownTimer(){
         if (isPlaying.value == true){
             pauseTimer()

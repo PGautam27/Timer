@@ -1,11 +1,6 @@
 package com.example.timer.model
 
-import androidx.compose.runtime.remember
-import com.example.timer.model.components.DataList
-import com.example.timer.model.components.timeList
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
+import com.example.timer.Data.timeList
 import java.util.concurrent.TimeUnit
 
 object model {

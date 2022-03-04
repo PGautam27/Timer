@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.*
 import com.example.timer.appColor.AppColor
-import com.example.timer.model.components.timeList
+import com.example.timer.Data.timeList
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
 import com.example.timer.view.components.CountButton

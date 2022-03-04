@@ -1,4 +1,4 @@
-package com.example.timer.model.components
+package com.example.timer.Data
 
 object timeList {
     val time = listOf(
