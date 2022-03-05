@@ -23,39 +23,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TimerTheme {
-                // A surface container using the 'background' color from the theme
-                //modd()
-
                 CountDownView()
             }
         }
-    }
-}
-
-@Composable
-fun modd() {
-   /* val x: model = model()
-    val X = remember {
-        x.TimeObj.time
-    }
-    LazyColumn(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center){
-        items(
-            items = X,
-            itemContent = {
-                Text(text = it.timeContent.toString())
-            }
-        )
-    }*/
-}
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    TimerTheme {
-        Greeting("Android")
     }
 }
