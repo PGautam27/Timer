@@ -51,7 +51,7 @@ fun CountDownView(
     ) {
         Spacer(modifier = Modifier.padding(top = 50.dp))
         Text(
-            text = "TIMER COUNTDOWN",
+            text = "TIMER COUNTDOWNS",
             style = TextStyle(
                 fontSize = 30.sp,
                 fontFamily = FontFamily.Default,
