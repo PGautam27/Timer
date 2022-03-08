@@ -5,7 +5,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -15,8 +14,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.timer.appColor.AppColor
-import com.example.timer.service.foregroundStartService
-import android.content.Context
 
 @Composable
 fun CountButton(
@@ -35,6 +32,7 @@ fun CountButton(
         Button(
             onClick = {
                 optionSelected()
+
             },
             modifier =
             androidx.compose.ui.Modifier
@@ -64,3 +62,4 @@ fun CountButton(
         }
     }
 }
+
