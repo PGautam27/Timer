@@ -1,17 +1,21 @@
 package com.example.timer.viewmodel
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.CountDownTimer
+import androidx.compose.material.contentColorFor
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
-import kotlinx.coroutines.launch
+import com.example.timer.service.foregroundStartService
 
 class MainViewModel: ViewModel() {
+
 
     private val _model = mutableStateOf<model>(model)
 
@@ -36,13 +40,12 @@ class MainViewModel: ViewModel() {
         }
     }
 
+
     fun changeDownTimer(id:Int){
         model1.TimeCountIncrement(id)
         countDownTimer?.cancel()
         handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
     }
-
-
 
     private fun pauseTimer(){
         countDownTimer?.cancel()

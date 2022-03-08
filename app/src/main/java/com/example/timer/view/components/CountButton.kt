@@ -9,11 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.timer.appColor.AppColor
+import com.example.timer.service.foregroundStartService
+import com.example.timer.viewmodel.MainViewModel
 
 @Composable
 fun CountButton(
@@ -21,6 +24,9 @@ fun CountButton(
     isPlaying: Boolean,
     optionSelected: () -> Unit,
 ) {
+    var x = remember {
+        "Start"
+    }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = androidx.compose.ui.Modifier
@@ -32,7 +38,6 @@ fun CountButton(
         Button(
             onClick = {
                 optionSelected()
-
             },
             modifier =
             androidx.compose.ui.Modifier
@@ -52,7 +57,6 @@ fun CountButton(
             } else {
                 "Stop"
             }
-
             Text(
                 pair,
                 fontSize = 20.sp,

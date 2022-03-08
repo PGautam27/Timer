@@ -1,16 +1,15 @@
 package com.example.timer.model
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import androidx.compose.ui.platform.LocalContext
 import com.example.timer.Data.timeList
 import com.example.timer.service.INTENT_COMMAND
 import com.example.timer.service.MyService
 import java.util.concurrent.TimeUnit
 
-
 object model {
+
   var TimeCountDown: Long = 0L
   val TimeObj = timeList
 

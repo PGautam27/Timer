@@ -70,7 +70,7 @@ fun CountDownView(
             modifier = Modifier
                 .size(70.dp)
                 .padding(50.dp),
-            isPlaying = isPlaying
+            isPlaying = isPlaying,
         ) {
             function()
         }
