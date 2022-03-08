@@ -42,6 +42,8 @@ class MainViewModel: ViewModel() {
         handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
     }
 
+
+
     private fun pauseTimer(){
         countDownTimer?.cancel()
         handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
