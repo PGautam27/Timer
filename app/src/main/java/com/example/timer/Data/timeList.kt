@@ -8,6 +8,7 @@ object timeList {
         DataList(4,1200000L, "20 min"),
         DataList(5,1500000L, "25 min"),
         DataList(6,1800000L, "30 min"),
-        DataList(7,30000L,"30 sec")
+        DataList(7,30000L,"30 sec"),
+        DataList(7,60000L,"1 min")
     )
 }
