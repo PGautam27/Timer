@@ -32,10 +32,17 @@ class MainViewModel: ViewModel() {
     private val _isPlaying = MutableLiveData(false)
     val isPlaying: LiveData<Boolean> = _isPlaying
 
+    private val _wannaPause = MutableLiveData(false)
+    val wannaPause: LiveData<Boolean> = _wannaPause
+
     fun handleCountDownTimer(){
         if (isPlaying.value == true){
-            pauseTimer()
-        }else{
+            stopTimer()
+        }
+        else if (wannaPause.value == true){
+
+        }
+        else{
             startTimer()
         }
     }
@@ -48,6 +55,10 @@ class MainViewModel: ViewModel() {
     }
 
     private fun pauseTimer(){
+
+    }
+
+    private fun stopTimer(){
         countDownTimer?.cancel()
         handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
     }
@@ -60,7 +71,7 @@ class MainViewModel: ViewModel() {
                 handleTimerValues(true,millisRemaining.formatTime(),progressValue)
             }
             override fun onFinish(){
-                pauseTimer()
+                stopTimer()
             }
         }.start()
     }
