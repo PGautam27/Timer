@@ -31,4 +31,5 @@ object model {
     TimeUnit.MILLISECONDS.toSeconds(this) % 60
   )
 
+
 }

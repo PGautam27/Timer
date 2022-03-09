@@ -39,9 +39,6 @@ class MainViewModel: ViewModel() {
         if (isPlaying.value == true){
             stopTimer()
         }
-        else if (wannaPause.value == true){
-
-        }
         else{
             startTimer()
         }
@@ -68,7 +65,11 @@ class MainViewModel: ViewModel() {
         countDownTimer = object : CountDownTimer(model1.TimeCountDown,1000){
             override fun onTick(millisRemaining: Long) {
                 val progressValue = millisRemaining.toFloat()/model1.TimeCountDown
-                handleTimerValues(true,millisRemaining.formatTime(),progressValue)
+                if (wannaPause.value == true){
+
+                }
+                else
+                    handleTimerValues(true,millisRemaining.formatTime(),progressValue)
             }
             override fun onFinish(){
                 stopTimer()
