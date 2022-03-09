@@ -116,10 +116,10 @@ class MainActivity : ComponentActivity() {
                         shape = RoundedCornerShape(25.dp),
 
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = AppColor.mossGreen,
+                            backgroundColor = AppColor.forestGreen,
                             contentColor = AppColor.forestGreen,
                         ),
-
+                        elevation = ButtonDefaults.elevation(0.dp)
                         ) {
                         Text(
                             "Pause",
