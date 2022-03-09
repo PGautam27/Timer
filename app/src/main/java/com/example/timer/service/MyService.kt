@@ -66,7 +66,7 @@ class MyService : Service(){
                 with(
                     NotificationChannel(
                         NOTIFICATION_CHANNEL_GENERAL,
-                        "Hello World",
+                        "Timer",
                         NotificationManager.IMPORTANCE_DEFAULT
                     )
                 ) {
@@ -86,8 +86,8 @@ class MyService : Service(){
             NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_GENERAL)
         ) {
             setTicker(null)
-            setContentTitle("Hello World")
-            setContentText("Hello World Description")
+            setContentTitle("Timer")
+            setContentText("Your time limit")
             setAutoCancel(false)
             setOngoing(true)
             setWhen(System.currentTimeMillis())
@@ -95,10 +95,10 @@ class MyService : Service(){
             priority = Notification.PRIORITY_MAX
             setContentIntent(replyPendingIntent)
             addAction(
-                0, "REPLY", replyPendingIntent
+                0, "Pause", replyPendingIntent
             )
             addAction(
-                0, "ACHIEVE", replyPendingIntent
+                0, "Resume", replyPendingIntent
             )
             startForeground(CODE_FOREGROUND_SERVICE, build())
         }
