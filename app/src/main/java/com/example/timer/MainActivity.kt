@@ -41,6 +41,7 @@ class MainActivity : ComponentActivity() {
                 val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
+
                 var Notification = false
                 Column(
                     modifier = Modifier
@@ -65,7 +66,7 @@ class MainActivity : ComponentActivity() {
                         size = 320,
                         stroke = 12
                     )
-                    Spacer(modifier = Modifier.height(80.dp))
+                    Spacer(modifier = Modifier.height(50.dp))
                     Button(
                         onClick = {
                             if (Notification){
@@ -73,6 +74,7 @@ class MainActivity : ComponentActivity() {
                             }
                             else
                                 foregroundStartService("Exit")
+
                             viewModel.handleCountDownTimer()
                         },
                         modifier =
@@ -96,6 +98,31 @@ class MainActivity : ComponentActivity() {
                         Notification = pair=="Start"
                         Text(
                             pair,
+                            fontSize = 20.sp,
+                            color = Color.White,
+                            fontFamily = FontFamily.Default
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Button(
+                        onClick = {
+                            viewModel.pauseTimer()
+                        },
+                        modifier =
+                        Modifier
+                            .height(70.dp)
+                            .width(200.dp),
+
+                        shape = RoundedCornerShape(25.dp),
+
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = AppColor.mossGreen,
+                            contentColor = AppColor.forestGreen,
+                        ),
+
+                        ) {
+                        Text(
+                            "Pause",
                             fontSize = 20.sp,
                             color = Color.White,
                             fontFamily = FontFamily.Default

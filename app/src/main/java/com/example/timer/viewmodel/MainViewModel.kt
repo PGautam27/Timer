@@ -15,11 +15,12 @@ import com.example.timer.model.model.formatTime
 import com.example.timer.service.foregroundStartService
 
 class MainViewModel: ViewModel() {
-
-
     private val _model = mutableStateOf<model>(model)
 
     private val model1 = _model.value
+
+    private var progressValue1 = 0.0F
+    private var milli = 0L
 
     private var countDownTimer: CountDownTimer? = null
 
@@ -33,7 +34,7 @@ class MainViewModel: ViewModel() {
     val isPlaying: LiveData<Boolean> = _isPlaying
 
     private val _wannaPause = MutableLiveData(false)
-    val wannaPause: LiveData<Boolean> = _wannaPause
+    var wannaPause: LiveData<Boolean> = _wannaPause
 
     fun handleCountDownTimer(){
         if (isPlaying.value == true){
@@ -48,28 +49,36 @@ class MainViewModel: ViewModel() {
     fun changeDownTimer(id:Int){
         model1.TimeCountIncrement(id)
         countDownTimer?.cancel()
-        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
+        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F,false)
     }
 
-    private fun pauseTimer(){
-
+    fun pauseTimer(){
+        _wannaPause.value = true
     }
 
     private fun stopTimer(){
         countDownTimer?.cancel()
-        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F)
+        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F,false)
     }
+
 
     private fun startTimer(){
         _isPlaying.value = true
+
         countDownTimer = object : CountDownTimer(model1.TimeCountDown,1000){
             override fun onTick(millisRemaining: Long) {
                 val progressValue = millisRemaining.toFloat()/model1.TimeCountDown
                 if (wannaPause.value == true){
-
+                    model1.TimeCountDown = millisRemaining + 1000L
+                    handleTimerValues(true,milli.formatTime(),progressValue1,true)
+                    stopTimer()
+                    return
                 }
-                else
-                    handleTimerValues(true,millisRemaining.formatTime(),progressValue)
+                else{
+                    progressValue1 = progressValue
+                    milli = millisRemaining
+                    handleTimerValues(true,millisRemaining.formatTime(),progressValue,false)
+                }
             }
             override fun onFinish(){
                 stopTimer()
@@ -77,9 +86,10 @@ class MainViewModel: ViewModel() {
         }.start()
     }
 
-    private fun handleTimerValues(isPlaying:Boolean,text:String,progress: Float){
+    private fun handleTimerValues(isPlaying:Boolean,text:String,progress: Float,wannaPause:Boolean){
         _isPlaying.value = isPlaying
         _time.value = text
         _progress.value = progress
+        _wannaPause.value = wannaPause
     }
 }
