@@ -42,8 +42,6 @@ class MainActivity : ComponentActivity() {
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-
-                var Notification = false
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -70,7 +68,7 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.height(50.dp))
                     Button(
                         onClick = {
-                            if (Notification){
+                            if (!isPlaying){
                                 foregroundStartService("Start")
                             }
                             else
@@ -95,7 +93,6 @@ class MainActivity : ComponentActivity() {
                         } else {
                             "Stop"
                         }
-                        Notification = pair=="Start"
                         Text(
                             pair,
                             fontSize = 20.sp,
