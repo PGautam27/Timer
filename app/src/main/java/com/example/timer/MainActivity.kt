@@ -42,13 +42,15 @@ class MainActivity : ComponentActivity() {
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
 
+                
+
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(AppColor.forestGreen),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.padding(top = 50.dp))
+                    Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
                         text = "TIMER COUNTDOWNS",
                         style = TextStyle(
@@ -65,7 +67,7 @@ class MainActivity : ComponentActivity() {
                         size = 320,
                         stroke = 12
                     )
-                    Spacer(modifier = Modifier.height(50.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
                     Button(
                         onClick = {
                             if (!isPlaying){
@@ -131,6 +133,7 @@ class MainActivity : ComponentActivity() {
                             fontFamily = FontFamily.Default
                         )
                     }
+                    Spacer(modifier = Modifier.padding(10.dp))
                 }
             }
         }

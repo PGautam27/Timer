@@ -8,8 +8,12 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.runtime.Composable
 import androidx.core.app.NotificationCompat
 import com.example.timer.R
+import com.example.timer.navigate.navigation
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 const val INTENT_COMMAND = "Command"
 const val INTENT_COMMAND_EXIT = "Exit"
@@ -34,6 +38,7 @@ class MyService : Service(){
         showNotification()
 
         if (command == INTENT_COMMAND_REPLY) {
+
             Toast.makeText(this, "Clicked in Notification", Toast.LENGTH_SHORT).show()
         }
 
