@@ -2,18 +2,17 @@ package com.example.timer.service
 
 import android.annotation.SuppressLint
 import android.app.*
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.Composable
 import androidx.core.app.NotificationCompat
+import com.example.timer.MainActivity
 import com.example.timer.R
-import com.example.timer.navigate.navigation
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.timer.model.model
 
 const val INTENT_COMMAND = "Command"
 const val INTENT_COMMAND_EXIT = "Exit"
@@ -51,8 +50,10 @@ class MyService : Service(){
     }
 
     @SuppressLint("LaunchActivityFromNotification")
-    private fun showNotification() {
+    private fun showNotification(){
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val resultIntent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this,1,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT)
         val replyIntent = Intent(this, MyService::class.java).apply {
             putExtra(INTENT_COMMAND, INTENT_COMMAND_REPLY)
         }
@@ -98,7 +99,7 @@ class MyService : Service(){
             setWhen(System.currentTimeMillis())
             setSmallIcon(R.drawable.ic_android_black_24dp)
             priority = Notification.PRIORITY_MAX
-            setContentIntent(replyPendingIntent)
+            setContentIntent(pendingIntent)
             addAction(
                 0, "Pause", replyPendingIntent
             )
@@ -107,5 +108,8 @@ class MyService : Service(){
             )
             startForeground(CODE_FOREGROUND_SERVICE, build())
         }
+
     }
+
+
 }

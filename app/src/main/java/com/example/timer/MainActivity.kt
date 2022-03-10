@@ -42,8 +42,6 @@ class MainActivity : ComponentActivity() {
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-                
-
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
