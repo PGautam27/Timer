@@ -42,6 +42,7 @@ class MainActivity : ComponentActivity() {
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
 
+
                 var Notification = false
                 Column(
                     modifier = Modifier
@@ -74,7 +75,6 @@ class MainActivity : ComponentActivity() {
                             }
                             else
                                 foregroundStartService("Exit")
-
                             viewModel.handleCountDownTimer()
                         },
                         modifier =
@@ -106,7 +106,8 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.height(20.dp))
                     Button(
                         onClick = {
-                            viewModel.pauseTimer()
+                            if (isPlaying)
+                                viewModel.pauseTimer()
                         },
                         modifier =
                         Modifier
@@ -116,15 +117,17 @@ class MainActivity : ComponentActivity() {
                         shape = RoundedCornerShape(25.dp),
 
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = AppColor.forestGreen,
-                            contentColor = AppColor.forestGreen,
+                            backgroundColor = if (isPlaying) AppColor.mossGreen else AppColor.forestGreen,
+                            contentColor = if (isPlaying) AppColor.mossGreen else AppColor.forestGreen,
                         ),
-                        elevation = ButtonDefaults.elevation(0.dp)
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = if (isPlaying) 4.dp else 0.dp
+                        )
                         ) {
                         Text(
                             "Pause",
                             fontSize = 20.sp,
-                            color = Color.White,
+                            color = if (isPlaying) Color.White else AppColor.forestGreen,
                             fontFamily = FontFamily.Default
                         )
                     }
