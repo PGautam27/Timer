@@ -106,6 +106,7 @@ class MainActivity : ComponentActivity() {
                             if (isPlaying)
                                 viewModel.pauseTimer()
                         },
+                        enabled = isPlaying,
                         modifier =
                         Modifier
                             .height(70.dp)
@@ -114,8 +115,10 @@ class MainActivity : ComponentActivity() {
                         shape = RoundedCornerShape(25.dp),
 
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = if (isPlaying) AppColor.mossGreen else AppColor.forestGreen,
-                            contentColor = if (isPlaying) AppColor.mossGreen else AppColor.forestGreen,
+                            backgroundColor = AppColor.mossGreen,
+                            contentColor = AppColor.mossGreen,
+                            disabledBackgroundColor = AppColor.forestGreen,
+                            disabledContentColor = AppColor.forestGreen
                         ),
                         elevation = ButtonDefaults.elevation(
                             defaultElevation = if (isPlaying) 4.dp else 0.dp
