@@ -12,6 +12,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +22,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.timer.Data.timeList
 import com.example.timer.appColor.AppColor
 import com.example.timer.model.model
@@ -31,17 +34,17 @@ import com.example.timer.view.CountDownView
 import com.example.timer.view.components.CountIndicatorCircle
 import com.example.timer.view.components.TimeButtons
 import com.example.timer.viewmodel.MainViewModel
-
+val viewModel: MainViewModel = MainViewModel()
+var progres = 0.0F
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel: MainViewModel = MainViewModel()
         super.onCreate(savedInstanceState)
         setContent {
             TimerTheme {
                 val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
-
+                progres = progress
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

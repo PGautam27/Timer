@@ -10,9 +10,13 @@ import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.timer.MainActivity
 import com.example.timer.R
 import com.example.timer.model.model
+import com.example.timer.progres
+import com.example.timer.viewModel
 
 const val INTENT_COMMAND = "Command"
 const val INTENT_COMMAND_EXIT = "Exit"
@@ -35,6 +39,8 @@ class MyService : Service(){
         }
 
         showNotification()
+        val _progress = MutableLiveData(progres)
+        val progresss : LiveData<Float> = _progress
 
         if (command == INTENT_COMMAND_REPLY) {
 
