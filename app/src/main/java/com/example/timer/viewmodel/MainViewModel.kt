@@ -72,6 +72,7 @@ class MainViewModel: ViewModel() {
                     model1.TimeCountDown = millisRemaining + 1000L
                     handleTimerValues(true,milli.formatTime(),progressValue1,true)
                     stopTimer()
+
                     return
                 }
                 else{
