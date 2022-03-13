@@ -8,6 +8,7 @@ import android.os.Build
 
 fun Context.foregroundStartService(command: String) {
     val intent = Intent(this, MyService::class.java)
+
     if (command == "Start") {
         intent.putExtra(INTENT_COMMAND, command)
 
