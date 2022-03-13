@@ -31,6 +31,7 @@ private const val CODE_ACHIEVE_INTENT = 3
 class MyService : Service(){
     override fun onBind(p0: Intent?): IBinder? = null
 
+
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val command = intent.getStringExtra(INTENT_COMMAND)
         if (command == INTENT_COMMAND_EXIT) {
