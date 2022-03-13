@@ -42,7 +42,6 @@ fun CountIndicatorCircle(
             CircularProgressIndicator(
                 progress = animationProgress,
                 modifier = Modifier
-
                     .height(size.dp)
                     .width(size.dp),
                 color = AppColor.mossGreen,
