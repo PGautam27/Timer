@@ -35,7 +35,6 @@ fun CountIndicatorCircle(
         targetValue = progress,
         animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
     )
-
     
     Column(modifier = modifier) {
         Box{
