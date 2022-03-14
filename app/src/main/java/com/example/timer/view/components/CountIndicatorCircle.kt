@@ -38,6 +38,7 @@ fun CountIndicatorCircle(
     
     Column(modifier = modifier) {
         Box{
+
             CircularProgressIndicator(
                 progress = animationProgress,
                 modifier = Modifier
