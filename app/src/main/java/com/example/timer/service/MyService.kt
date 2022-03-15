@@ -2,7 +2,6 @@ package com.example.timer.service
 
 import android.annotation.SuppressLint
 import android.app.*
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -10,13 +9,8 @@ import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.timer.MainActivity
 import com.example.timer.R
-import com.example.timer.model.model
-import com.example.timer.progres
-import com.example.timer.viewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -41,8 +35,7 @@ class MyService : Service(){
         }
         work()
         showNotification()
-        val _progress = MutableLiveData(progres)
-        val progresss : LiveData<Float> = _progress
+
 
         if (command == INTENT_COMMAND_REPLY) {
 
