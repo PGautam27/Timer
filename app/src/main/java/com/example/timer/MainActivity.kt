@@ -34,8 +34,8 @@ import com.example.timer.view.CountDownView
 import com.example.timer.view.components.CountIndicatorCircle
 import com.example.timer.view.components.TimeButtons
 import com.example.timer.viewmodel.MainViewModel
-val viewModel: MainViewModel = MainViewModel()
 class MainActivity : ComponentActivity() {
+    val viewModel: MainViewModel = MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
