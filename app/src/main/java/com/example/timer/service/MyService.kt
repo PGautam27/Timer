@@ -94,7 +94,7 @@ class MyService : Service(){
         ) {
             setTicker(null)
             setContentTitle("Timer")
-            setContentText("Your time limit")
+            setContentText("Your Timer is running")
             setAutoCancel(false)
             setOngoing(true)
             setWhen(System.currentTimeMillis())
