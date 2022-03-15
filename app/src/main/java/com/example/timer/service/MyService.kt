@@ -33,7 +33,6 @@ class MyService : Service(){
             stopService()
             return START_NOT_STICKY
         }
-        work()
         showNotification()
 
 
@@ -109,9 +108,6 @@ class MyService : Service(){
             )
             startForeground(CODE_FOREGROUND_SERVICE, build())
         }
-
-    }
-    private fun work() = GlobalScope.launch {
 
     }
 
