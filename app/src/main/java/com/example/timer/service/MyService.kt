@@ -17,6 +17,8 @@ import com.example.timer.R
 import com.example.timer.model.model
 import com.example.timer.progres
 import com.example.timer.viewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 const val INTENT_COMMAND = "Command"
 const val INTENT_COMMAND_EXIT = "Exit"
@@ -31,14 +33,13 @@ private const val CODE_ACHIEVE_INTENT = 3
 class MyService : Service(){
     override fun onBind(p0: Intent?): IBinder? = null
 
-
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val command = intent.getStringExtra(INTENT_COMMAND)
         if (command == INTENT_COMMAND_EXIT) {
             stopService()
             return START_NOT_STICKY
         }
-
+        work()
         showNotification()
         val _progress = MutableLiveData(progres)
         val progresss : LiveData<Float> = _progress
@@ -115,6 +116,9 @@ class MyService : Service(){
             )
             startForeground(CODE_FOREGROUND_SERVICE, build())
         }
+
+    }
+    private fun work() = GlobalScope.launch {
 
     }
 

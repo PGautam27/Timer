@@ -35,7 +35,6 @@ import com.example.timer.view.components.CountIndicatorCircle
 import com.example.timer.view.components.TimeButtons
 import com.example.timer.viewmodel.MainViewModel
 val viewModel: MainViewModel = MainViewModel()
-var progres = 0.0F
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +43,7 @@ class MainActivity : ComponentActivity() {
                 val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
                 val progress by viewModel.progress.observeAsState(1.0F)
                 val isPlaying by viewModel.isPlaying.observeAsState(false)
-                progres = progress
+
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
