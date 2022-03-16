@@ -8,10 +8,18 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.timer.MainActivity
 import com.example.timer.R
+import com.example.timer.viewModel
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val INTENT_COMMAND = "Command"
@@ -25,8 +33,9 @@ private const val CODE_REPLY_INTENT = 2
 private const val CODE_ACHIEVE_INTENT = 3
 
 class MyService : Service(){
-    override fun onBind(p0: Intent?): IBinder? = null
 
+    override fun onBind(p0: Intent?): IBinder? = null
+    private val time:LiveData<String> = viewModel.time
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val command = intent.getStringExtra(INTENT_COMMAND)
         if (command == INTENT_COMMAND_EXIT) {
@@ -93,7 +102,7 @@ class MyService : Service(){
         ) {
             setTicker(null)
             setContentTitle("Timer")
-            setContentText("Your Timer is running")
+            setContentText("Your time ${time.value}")
             setAutoCancel(false)
             setOngoing(true)
             setWhen(System.currentTimeMillis())
