@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.timer.appColor.AppColor
 import com.example.timer.Data.timeList
+import com.example.timer.ui.theme.mossGreen
 import com.example.timer.viewmodel.MainViewModel
 
 @Composable
@@ -36,7 +36,7 @@ viewModel: MainViewModel
                 Button(
                     onClick = { viewModel.changeDownTimer(it.id) },
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = AppColor.mossGreen,
+                        backgroundColor = mossGreen,
                         contentColor = Color.White
                     ),
                     modifier = Modifier

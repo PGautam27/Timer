@@ -14,10 +14,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.*
-import com.example.timer.appColor.AppColor
 import com.example.timer.Data.timeList
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
+import com.example.timer.ui.theme.forestGreen
 import com.example.timer.view.components.CountButton
 import com.example.timer.view.components.CountIndicatorCircle
 import com.example.timer.view.components.TimeButtons
@@ -46,7 +46,7 @@ fun CountDownView(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(AppColor.forestGreen),
+            .background(forestGreen),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.padding(top = 50.dp))

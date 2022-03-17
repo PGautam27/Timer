@@ -30,6 +30,7 @@ import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
 import com.example.timer.service.foregroundStartService
 import com.example.timer.ui.theme.TimerTheme
+import com.example.timer.ui.theme.forestGreen
 import com.example.timer.view.CountDownView
 import com.example.timer.view.components.CountIndicatorCircle
 import com.example.timer.view.components.TimeButtons
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(AppColor.forestGreen),
+                        .background(forestGreen),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Spacer(modifier = Modifier.padding(top = 30.dp))

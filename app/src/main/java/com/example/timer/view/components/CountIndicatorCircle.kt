@@ -1,7 +1,6 @@
 package com.example.timer.view.components
 
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -11,16 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.timer.appColor.AppColor
+import com.example.timer.ui.theme.mossGreen
 
 
 @Composable
@@ -44,7 +38,7 @@ fun CountIndicatorCircle(
                 modifier = Modifier
                     .height(size.dp)
                     .width(size.dp),
-                color = AppColor.mossGreen,
+                color = mossGreen,
                 strokeWidth = stroke.dp,
             )
             Column(modifier = Modifier.align(Alignment.Center)) {

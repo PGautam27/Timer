@@ -9,14 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.timer.appColor.AppColor
-import com.example.timer.service.foregroundStartService
-import com.example.timer.viewmodel.MainViewModel
+import com.example.timer.ui.theme.forestGreen
+import com.example.timer.ui.theme.mossGreen
 
 @Composable
 fun CountButton(
@@ -47,8 +44,8 @@ fun CountButton(
             shape = RoundedCornerShape(25.dp),
 
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = AppColor.mossGreen,
-                contentColor = AppColor.forestGreen,
+                backgroundColor = mossGreen,
+                contentColor = forestGreen,
             ),
 
             ) {
