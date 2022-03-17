@@ -26,13 +26,13 @@ import com.example.timer.viewmodel.MainViewModel
 @Composable
 fun CountDownView(viewModel: MainViewModel = viewModel()) {
 
-    val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
-    val progress by viewModel.progress.observeAsState(1.0F)
-    val isPlaying by viewModel.isPlaying.observeAsState(false)
+    //val time by viewModel.time.observeAsState(model.TimeCountDown.formatTime())
+    //val progress by viewModel.progress.observeAsState(1.0F)
+    //val isPlaying by viewModel.isPlaying.observeAsState(false)
 
-    CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList,viewModel){
-        viewModel.handleCountDownTimer()
-    }
+   // CountDownView(time = time, progress = progress, isPlaying = isPlaying, timeList = timeList,viewModel){
+     //   viewModel.handleCountDownTimer()
+   // }
 }
 @Composable
 fun CountDownView(

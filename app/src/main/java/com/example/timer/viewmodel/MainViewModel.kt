@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class MainViewModel: ViewModel() {
     private val _model = mutableStateOf<model>(model)
@@ -18,20 +20,20 @@ class MainViewModel: ViewModel() {
 
     private var countDownTimer: CountDownTimer? = null
 
-    private val _time = MutableLiveData(model1.TimeCountDown.formatTime())
-    val time: LiveData<String> =_time
+    private val _time = MutableStateFlow(model1.TimeCountDown.formatTime())
+    val time =_time.asStateFlow()
 
-    private val _progress = MutableLiveData(1.00F)
-    val progress: LiveData<Float> = _progress
+    private val _progress = MutableStateFlow(1.00F)
+    val progress= _progress.asStateFlow()
 
-    private val _isPlaying = MutableLiveData(false)
-    val isPlaying: LiveData<Boolean> = _isPlaying
+    private val _isPlaying = MutableStateFlow(false)
+    val isPlaying= _isPlaying.asStateFlow()
 
     private val _wannaPause = MutableLiveData(false)
     var wannaPause: LiveData<Boolean> = _wannaPause
 
     fun handleCountDownTimer(){
-        if (isPlaying.value == true){
+        if (isPlaying.value){
             stopTimer()
         }
         else{
