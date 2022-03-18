@@ -22,6 +22,7 @@ TimeList: timeList,
 viewModel: MainViewModel
 ) {
     val times = remember { TimeList.time }
+    val times_ = viewModel.SomeList.value!!
     LazyRow(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -30,7 +31,7 @@ viewModel: MainViewModel
             .height(100.dp)
     ) {
         items(
-            items = times,
+            items = times_.time,
             itemContent = {
                 Spacer(modifier = Modifier.padding(start = 10.dp))
                 Button(

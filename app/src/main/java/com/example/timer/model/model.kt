@@ -3,6 +3,7 @@ package com.example.timer.model
 import android.content.Context
 import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
+import com.example.timer.Data.SomeList
 import com.example.timer.Data.timeList
 import com.example.timer.service.INTENT_COMMAND
 import com.example.timer.service.MyService
@@ -31,5 +32,6 @@ object model {
     TimeUnit.MILLISECONDS.toSeconds(this) % 60
   )
 
+  val timeminList = SomeList()
 
 }

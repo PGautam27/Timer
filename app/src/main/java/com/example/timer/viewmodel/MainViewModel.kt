@@ -5,10 +5,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.timer.Data.SomeList
 import com.example.timer.model.model
 import com.example.timer.model.model.formatTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
     private val _model = mutableStateOf<model>(model)
@@ -32,6 +35,14 @@ class MainViewModel: ViewModel() {
     private val _wannaPause = MutableLiveData(false)
     var wannaPause: LiveData<Boolean> = _wannaPause
 
+    val SomeList = mutableStateOf<SomeList?>(null)
+
+    init {
+        viewModelScope.launch {
+            SomeList.value = model.timeminList
+        }
+    }
+
     fun handleCountDownTimer(){
         if (isPlaying.value){
             stopTimer()
@@ -43,9 +54,10 @@ class MainViewModel: ViewModel() {
 
 
     fun changeDownTimer(id:Int){
-        model1.TimeCountIncrement(id)
+        val someList = SomeList.value
+        val min = someList?.getTimeContentById(id)?.formatTime()
         countDownTimer?.cancel()
-        handleTimerValues(false,model1.TimeCountDown.formatTime(),1.0F,false)
+        handleTimerValues(false,min!!,1.0F,false)
     }
 
     fun pauseTimer(){
@@ -61,9 +73,9 @@ class MainViewModel: ViewModel() {
     private fun startTimer(){
         _isPlaying.value = true
 
-        countDownTimer = object : CountDownTimer(model1.TimeCountDown,1000){
+        countDownTimer = object : CountDownTimer(SomeList.value?.selectedTime?.timeContent!!,1000){
             override fun onTick(millisRemaining: Long) {
-                val progressValue = millisRemaining.toFloat()/model1.TimeCountDown
+                val progressValue = millisRemaining.toFloat()/SomeList.value?.selectedTime?.timeContent!!
                 if (wannaPause.value == true){
                     model1.TimeCountDown = millisRemaining + 1000L
                     handleTimerValues(true,milli.formatTime(),progressValue1,true)
