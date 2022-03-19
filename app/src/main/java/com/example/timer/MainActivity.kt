@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
-                        text = "TIMER COUNTDOWNS",
+                        text = "TIMER COUNTDOWN",
                         style = TextStyle(
                             fontSize = 30.sp,
                             fontFamily = FontFamily.Default,
