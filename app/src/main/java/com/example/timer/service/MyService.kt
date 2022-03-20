@@ -42,8 +42,8 @@ class MyService : Service(){
             stopService()
             return START_NOT_STICKY
         }
+        
         showNotification()
-
 
         if (command == INTENT_COMMAND_REPLY) {
 
