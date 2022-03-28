@@ -109,4 +109,15 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
 
+    def app_compat = "1.2.0"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+
+    def material = "1.2.1"
+    implementation "com.google.android.material:material:$material"
+
+    def constraint_layout = "2.0.4"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+
+    def androidx_ui = "1.0.0-alpha07"
+    implementation "androidx.ui:ui-tooling:$androidx_ui"
 }
