@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
                         text = "TIMER COUNTDOWN",
-                        style = MaterialTheme.typography.h3
+                        style = MaterialTheme.typography.h1,
                     )
                     TimeButtons(TimeList = timeList,viewModel)
                     CountIndicatorCircle(
