@@ -16,6 +16,17 @@ private val QuickSand = FontFamily(
     Font(R.font.quicksand_medium,FontWeight.W500),
     Font(R.font.quicksand_bold,FontWeight.W600),
 )
+private val Inspiration = FontFamily(
+    Font(R.font.inspiration_regular,FontWeight.W400)
+)
+
+val InspirationTypography = Typography(
+    h1 = TextStyle(
+        fontFamily = Inspiration,
+        fontSize = 30.sp,
+        fontWeight = FontWeight.W400
+    )
+)
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
