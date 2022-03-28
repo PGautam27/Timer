@@ -54,11 +54,7 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     Text(
                         text = "TIMER COUNTDOWN",
-                        style = TextStyle(
-                            fontSize = 30.sp,
-                            fontFamily = FontFamily.Default,
-                            color = Color.White
-                        )
+                        style = MaterialTheme.typography.h3
                     )
                     TimeButtons(TimeList = timeList,viewModel)
                     CountIndicatorCircle(

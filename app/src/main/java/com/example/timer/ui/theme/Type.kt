@@ -1,6 +1,7 @@
 package com.example.timer.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +36,8 @@ val Typography = Typography(
     h3 = TextStyle(
         fontFamily = QuickSand,
         fontWeight = FontWeight.W500,
-        fontSize = 20.sp
+        fontSize = 20.sp,
+        color = Color.White
     ),
     h4 = TextStyle(
         fontFamily = QuickSand,
